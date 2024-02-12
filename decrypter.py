@@ -35,11 +35,8 @@ def unshiftMatrix(matrix):
     for col in range(num_cols):
         unshifted_col = []
         for row in range(num_rows):
-            # Calculate the unshifted index for the current column
             unshifted_index = (col - row) % num_cols
-            # Append the element at the unshifted index in the current column
             unshifted_col.append(matrix[row][unshifted_index])
-        # Append the unshifted column to the unshifted matrix
         unshifted_matrix.append(unshifted_col)
 
     return unshifted_matrix
