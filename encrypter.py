@@ -14,11 +14,8 @@ def shiftMatrix(matrix):
     for col in range(num_cols):
         shifted_col = []
         for row in range(num_rows):
-            # Calculate the shifted index for the current column
             shifted_index = (col + row) % num_cols
-            # Append the element at the shifted index in the current column
             shifted_col.append(matrix[row][shifted_index])
-        # Append the shifted column to the shifted matrix
         shifted_matrix.append(shifted_col)
     return shifted_matrix
 
@@ -91,7 +88,6 @@ def unSubstitute(keyS, text):
             r = key.index(i)
             decypheredText += chars[r]
         except ValueError:
-            # Skip characters not present in the key
             pass
     return decypheredText
 
@@ -99,7 +95,6 @@ def unSubstitute(keyS, text):
 def substitute(keyS, text):
     chars = string.ascii_letters + string.digits + string.punctuation + " "
     key = [k for k in keyS]
-    # Filter out characters from text that are not present in chars
     text = ''.join(c for c in text if c in chars)
     r = 0
     subText = ""
@@ -116,9 +111,8 @@ key = makeKey()
 with open('key.txt', 'w') as keyFile:
     keyFile.write('key = "{}"'.format(key))
 
-# Encrypt the contents of 'toEncrypt.txt' and write the encrypted content to 'encrypted.txt'
 with open('toEncrypt.txt', 'r') as unencryptedFile:
-    with open('encrypted.txt', 'w') as encryptedFile:  # Open in write mode ('w') to clear the file
+    with open('encrypted.txt', 'w') as encryptedFile:  
         for line in unencryptedFile:
             line = substitute(key, line)
             eLineBinary = encrypt(line)
